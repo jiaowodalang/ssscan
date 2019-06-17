@@ -5,6 +5,8 @@ import requests
 import json
 import time
 
+
+
 class SQLMAPAPI():
     def __init__(self,server_ip = '127.0.0.1',server_port = '8775'):
         self.server = "http://" + server_ip + ":" + server_port
@@ -14,8 +16,7 @@ class SQLMAPAPI():
 
 
     def set_task_options(self,headers):
-        
-        sqlmap_conf={}
+        sqlmap_conf = {}
         sqlmap_conf['headers'] = ''
         for header in headers.keys():
             sqlmap_conf['headers'] += "%s: %s\r\n" % (header, headers[header])
@@ -29,8 +30,9 @@ class SQLMAPAPI():
     def start_target_scan(self, url, headers, data):
         '''开始扫描的方法,成功开启扫描返回True，开始扫描失败返回False'''
         self.set_task_options(headers)
+        #print(headers['Cookie'])
         r = requests.post(self.server + '/scan/' + self.taskid + '/start',
-                      data=json.dumps({'url':url,'data':data}),
+                      data=json.dumps({'url':url,'data':data, 'cookie':headers['Cookie']}),
                       headers=self.header)
         if r.json()['success']:
             return r.json()['engineid']
